@@ -27,6 +27,8 @@ Cloudflare超级代理，OpenAI/ChatGPT代理，Github加速，在线代理。�
 
 # 在线体验
 
+密码 123
+
 ### 首页
 https://y.demo.lhyang.org/
 ### Duckduckgo聊天
@@ -44,17 +46,23 @@ Password is `maga2028`
 
 
 # 快速开始
+* 在 1.4 版本后启动了默认[安全密码](#安全密码)，默认密码为 `123`，感谢 <ruby>Bolster<rp>（</rp><rt>da sha bi</rt><rp>）</rp></ruby> 给我整不会了。
+
+![bolster](https://github.com/1234567Yang/cf-proxy-ex/blob/main/img/depoly/abuse_report.png)
 
 * [在Deno上部署](https://github.com/1234567Yang/cf-proxy-ex/blob/main/deploy_on_deno_tutorial.md)
 * [在Cloudflare上部署](https://github.com/1234567Yang/cf-proxy-ex/blob/main/deploy_on_cf_tutorial.md)
+* 自定义域名获取（可选但建议，更稳定）：
+  * 域名购买：
+    * https://porkbun.com/
+    * https://domain.com/
+    * 购买时可以按 `Ctrl + F`，搜索 `$0.`，**此类域名为一年即抛类型，注意关闭自动续费**。
 
 > [!WARNING]
-> 我强烈建议开启[安全密码](#安全密码)，不仅可以防止被扫描（你猜猜我扫出来多少），还可以防止网站爬虫爬取内容。<br>
-> 此外，设置子域名的时候，请不要设置成类似于`proxy.example.com`的格式，因为在TLS握手的时候（会明文发送SNI），很容易被识别出这是一个代理服务。建议使用看起来更常规、无 / 假 特定含义的子域名，例如 `cdn.example.com` 或 `img.example.com` 等，以降低被识别的风险。
+> 设置子域名的时候，请不要设置成类似于`proxy.example.com`的格式，因为在TLS握手的时候（会明文发送SNI），很容易被识别出这是一个代理服务。建议使用看起来更常规、无 / 假 特定含义的子域名，例如 `cdn.example.com` 或 `img.example.com` 等，以降低被识别的风险。
 
-自定义域名获取（可选）：
-
-* 域名购买：https://porkbun.com/  https://domain.com/<br >购买时可以按 `Ctrl + F`，搜索 `$0.` 
+> [!NOTE]  
+> 如果部署失败（重定向、报错 等），请尝试完全复制粘贴 `_worker.js` 的内容，如果还是不行请删除 worker 并新建一个。
 
 # 安全密码
 安全密码利用Cookie，在设置了密码的情况下，会先检测是否有密码Cookie以及是否正确，如果不正确那么可以设置输入密码界面，或者直接403。密码Cookie默认名称为`passwordCookieName`，设置密码可以代码里搜索`const password = "";`并替换成你的密码。
@@ -84,10 +92,10 @@ MIT License + 一些条件<br>
 * 感谢 @04041b 发现了几个BUG，并告诉我在线代理这个思路。
 * 本项目基于[gaboolic的cloudflare-reverse-proxy](https://github.com/gaboolic/cloudflare-reverse-proxy/)，感谢gaboolic给我提供相关在Cloudflare部署的实现思路。
 * 感谢所有提交issue，提交PR的朋友帮助改进本项目。
-* 感谢 @brightu 分享了一个非常实用的添加Cookie的方式，详情请见 https://github.com/1234567Yang/cf-proxy-ex/issues/15 。
-* 感谢 @since114514 参与我的一个小实验：成功从worker.js发现了一段注释，详情请见 https://github.com/1234567Yang/cf-proxy-ex/issues/31 。
-* 感谢 @fangyuan99 通知我本项目其实还可以在Deno上部署，详情请见 https://github.com/1234567Yang/cf-proxy-ex/issues/33 。
-* 感谢 @Tayasui-rainnya 提供的UI（暂未应用）
+* 感谢 @brightu 分享了一个非常实用的添加Cookie的方式 https://github.com/1234567Yang/cf-proxy-ex/issues/15 。
+* 感谢 @since114514 参与我的一个小实验：成功从worker.js发现了一段注释 https://github.com/1234567Yang/cf-proxy-ex/issues/31 。
+* 感谢 @fangyuan99 通知我本项目其实还可以在Deno上部署 https://github.com/1234567Yang/cf-proxy-ex/issues/33 。
+* 感谢 @Tayasui-rainnya 提供的 UI https://github.com/1234567Yang/cf-proxy-ex/issues/44 。
 <!--* ~~非常非常非常感谢为我未来着想的学校管理员，把好多正常网站屏蔽了，否则这个项目就不存在了。此外，非常非常非常感谢学校管理员是让这个项目存在的原因（之一），能让我写在 College App 上~~-->
 
 # Star History
